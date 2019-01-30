@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<protocol name="book_list">
+	<param name="ReqBookInfo">
+		<property name="book_name" type="string" default="Unknown"/>
+	</param>
+</protocol>
