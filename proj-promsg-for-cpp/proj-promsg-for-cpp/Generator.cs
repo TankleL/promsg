@@ -30,27 +30,20 @@ namespace proj_promsg_for_cpp
         public static string gen_property_list(ProtocolConfig.Parameter pm)
         {
             string res = String.Empty;
-            foreach (var pp in pm.Properties)
+            for(int i = 0; i < pm.Properties.Count(); ++i)
             {
-                if(res.Length > 0)
-                {
-                    res += ", ";
-                }
-                res += pp.Name;
-            }
-            return res;
-        }
+                var pp = pm.Properties[i];
 
-        public static string gen_ctor_param_list(ProtocolConfig.Parameter pm)
-        {
-            string res = String.Empty;
-            foreach (var pp in pm.Properties)
-            {
-                if (res.Length > 0)
+                if(i > 0)
                 {
-                    res += ", ";
+                    res += ",\n\t\t";
                 }
-                res += DataTypeMap.DMap[pp.DataType] + " " + pp.Name + "_";
+                else if(i == 0)
+                {
+                    res += "\n\t\t";
+                }
+
+                res += pp.Name;
             }
             return res;
         }
