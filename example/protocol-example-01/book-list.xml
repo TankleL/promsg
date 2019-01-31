@@ -2,5 +2,8 @@
 <protocol name="book_list">
 	<param name="ReqBookInfo">
 		<property name="book_name" type="string" default="Unknown"/>
+		<property name="client_name" type="string" default="Unknown"/>
+		<property name="client_id" type="int32" default="0"/>
+		<property name="book_date" type="uint32" default="0"/>
 	</param>
 </protocol>
