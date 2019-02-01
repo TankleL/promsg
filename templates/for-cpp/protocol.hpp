@@ -1,8 +1,9 @@
-$(PROTOCOL_DESC)
-$(PROTOCOL_REF_HEADERS)
 
 #ifndef $(PROTOCOL_NAME)
 #define $(PROTOCOL_NAME)
+
+$(PROTOCOL_REF_HEADERS)
+#include <msgpack.hpp>
 
 $(PARAM_LIST)
 

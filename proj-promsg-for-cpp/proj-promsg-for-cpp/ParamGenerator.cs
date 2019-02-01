@@ -13,7 +13,7 @@ namespace proj_promsg_for_cpp
         public static string gen_property(ProtocolConfig.Property pp)
         {
             string res = String.Empty;
-            res = DataTypeMap.DMap[pp.DataType] + " " + pp.Name + ";";
+            res = DataTypeMap.Convert(pp.DataType, pp.DataType) + " " + pp.Name + ";";
             return res;
         }
 
@@ -53,7 +53,9 @@ namespace proj_promsg_for_cpp
             string res = pm.Name + "(\n\t\t";
             for(int i = 0; i < pm.Properties.Count(); ++i)
             {
-                if(i > 0)
+                ProtocolConfig.Property pp = pm.Properties[i];
+
+                if (i > 0)
                 {
                     res += "\n\t\t, ";
                 }
@@ -61,12 +63,13 @@ namespace proj_promsg_for_cpp
                 {
                     res += "  ";
                 }
-                res += DataTypeMap.DMap[pm.Properties[i].DataType] + " " + pm.Properties[i].Name + "_";
+                res += DataTypeMap.Convert(pp.DataType, pp.DataType) + " " + pp.Name + "_";
             }
             res += "\n\t)\n\t\t:";
 
             for (int i = 0; i < pm.Properties.Count(); ++i)
             {
+                ProtocolConfig.Property pp = pm.Properties[i];
                 if (i > 0)
                 {
                     res += "\n\t\t, ";
@@ -76,20 +79,7 @@ namespace proj_promsg_for_cpp
                     res += " ";
                 }
 
-                res += pm.Properties[i].Name + "(";
-
-                switch(pm.Properties[i].DataType)
-                {
-                case "string":
-                    res += "\"" + pm.Properties[i].Default + "\"";
-                    break;
-
-                default:
-                    res += pm.Properties[i].Default;
-                    break;
-                }
-
-                res += ")";
+                res += pp.Name + "(" + pp.Name + "_)";
             }
 
             res += "\n\t{}";

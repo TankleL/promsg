@@ -44,11 +44,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataTypeMap.cs" />
-    <Compile Include="Generator.cs" />
+    <Compile Include="ParamGenerator.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ProtocolConfig.cs" />
     <Compile Include="ProtocolGenerator.cs" />
+    <Compile Include="AsGenerator.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

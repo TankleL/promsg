@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.IO;
 
 namespace proj_promsg_for_cpp
 {
@@ -10,23 +11,39 @@ namespace proj_promsg_for_cpp
     {
         static void Main(string[] args)
         {
-            if(args.Length < 1)
-            {
-                Console.WriteLine("wrong arguments.");
-                return;
-            }
-
+            string output_path = String.Empty;
             DataTypeMap.init();
 
-            foreach(string filename in args)
+            Dictionary<string, string> generated = new Dictionary<string, string>();
+            foreach (string cmd in args)
             {
-                ProtocolConfig pc = new ProtocolConfig();
-                pc.read(filename);
-
-                foreach(var param in pc.ParamList)
+                if(cmd.IndexOf("-o") == 0)
                 {
-                    string gen = ParamGenerator.generate(param);
+                    output_path = cmd.Substring(2);
                 }
+                else
+                {
+                    ProtocolConfig pc = new ProtocolConfig();
+                    pc.read(cmd);
+                    generated.Add(cmd, ProtocolGenerator.generate(pc));
+                }
+            }
+
+            foreach(var code in generated)
+            {
+                string path = Path.GetDirectoryName(code.Key);
+                string name = Path.GetFileName(code.Key);
+
+                path = output_path.Length > 0 ? output_path : path;
+
+                int pos_del = name.LastIndexOf(".xml");
+                if(pos_del >= 0 && name.Length - ".xml".Length == pos_del)
+                {
+                    name = name.Substring(0, pos_del);
+                }
+
+                name = path + "\\" + name + ".hpp";
+                File.WriteAllText(name, code.Value);
             }
         }
     }

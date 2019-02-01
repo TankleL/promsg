@@ -6,4 +6,26 @@
 		<property name="client_id" type="int32" default="0"/>
 		<property name="book_date" type="uint32" default="0"/>
 	</param>
+	
+	<param name="ReqBookInfo2">
+		<property name="book_name" type="string" default="Unknown"/>
+		<property name="client_name" type="string" default="Unknown"/>
+		<property name="client_id" type="int32" default="0"/>
+		<property name="book_date" type="uint32" default="0"/>
+		<property name="cost" type="uint32" default="0"/>
+	</param>
+	
+	<param name="ReqBookInfo3">
+		<property name="book_name" type="string" default="Unknown"/>
+		<property name="client_name" type="string" default="Unknown"/>
+		<property name="client_id" type="int32" default="0"/>
+		<property name="book_date" type="uint32" default="0"/>
+	</param>
+	
+	<param name="ReqBookInfo4">
+		<property name="book_name" type="string" default="Unknown"/>
+		<property name="client_name" type="string" default="Unknown"/>
+		<property name="client_id" type="int32" default="0"/>
+		<property name="book_date" type="uint32" default="0"/>
+	</param>
 </protocol>

@@ -35,5 +35,18 @@ namespace proj_promsg_for_cpp
                 throw e;
             }
         }
+
+        public static string Convert(string origin, string default_type)
+        {
+            try
+            {
+                string res = DMap[origin];
+                return res;
+            }
+            catch(Exception)
+            {
+                return default_type;
+            }
+        }
     }
 }
